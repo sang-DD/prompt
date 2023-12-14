@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가위바위보 게임</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #result {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>가위바위보 게임</h1>
+  <p>선택하세요: <button onclick="playGame('rock')">바위</button> <button onclick="playGame('paper')">보</button> <button onclick="playGame('scissors')">가위</button></p>
+  <div id="result"></div>
+
+  <script>
+    function playGame(userChoice) {
+      var choices = ['rock', 'paper', 'scissors'];
+      var computerChoice = choices[Math.floor(Math.random() * 3)];
+
+      var result = "";
+
+      if (userChoice === computerChoice) {
+        result = "무승부!";
+      } else if (
+        (userChoice === 'rock' && computerChoice === 'scissors') ||
+        (userChoice === 'paper' && computerChoice === 'rock') ||
+        (userChoice === 'scissors' && computerChoice === 'paper')
+      ) {
+        result = "이겼습니다!";
+      } else {
+        result = "졌습니다!";
+      }
+
+      document.getElementById('result').innerHTML = "당신: " + userChoice + "<br>컴퓨터: " + computerChoice + "<br>결과: " + result;
+    }
+  </script>
+
+</body>
+</html>
